@@ -65,13 +65,22 @@ public class Calc extends HttpServlet {
 			}
 			
 			switch (calc) {
-			case "a": 
-				result = Calc1.getResult();
-				request.setAttribute("calc", "Доход");
+			
+				case "a": 
+					result = Calc1.getResult();
+					request.setAttribute("calc", "Доход");
+	
+				case "b": 
+					result = Calc2.getResult();
+					request.setAttribute("calc", "Стартовый капитал");
+					
+				case "c":
+					result = Calc3.getResult();
+					request.setAttribute("calc", "Срок достижения цели");
+				}
 			}
 			
 			
 		}
 		
-	}
 }
