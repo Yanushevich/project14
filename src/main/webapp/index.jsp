@@ -13,7 +13,7 @@
 
     <title> Инвестиционный калькулятор </title>
 </head>
-    <body background=”/assets/images/Background.jpg”>
+    <body background="${pageContext.request.contextPath}/assets/images/bg.jpg" >
         <header class="header">
             <div class="container">
                 <div class="header__inner">
@@ -122,10 +122,10 @@ setInterval(getDate, 0);
     </div>
  
   <div class="calc-frow">
-        <div class="calc-fleft">Период реинвестирования</div>
-        <div class="calc-fright">
-            <div class="calc-input">
-                <select name="period" class="calc-inp">
+        <div>Период реинвестирования</div>
+        <div>
+            <div>
+                <select name="period">
                     <option value="0" >Не реинвестировать</option>
                     <option value="12" selected>1 раз в месяц</option>
                     <option value="3" >1 раз в квартал</option>
