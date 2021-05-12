@@ -27,15 +27,15 @@ public class Calc extends HttpServlet {
 		private final String second_calc;
 		private final String bank;
 		private final String period;
-		private final String calc;
+		private final String radio;
 		private double result;
 						
-		private RequestCalc (String Text1, String Text2, String bank, String period, String calc) {
+		private RequestCalc (String Text1, String Text2, String bank, String period, String radio) {
 			this.first_calc = Text1;
 			this.second_calc = Text2;
 			this.bank = bank;
 			this.period = period;
-			this.calc = calc;
+			this.radio = radio;
 			}
 		
 		public static RequestCalc fromRequestParameters(HttpServletRequest request) {
@@ -44,7 +44,7 @@ public class Calc extends HttpServlet {
 			request.getParameter("Text2"),
 			request.getParameter("bank"),
 			request.getParameter("period"),
-			request.getParameter("calc"));
+			request.getParameter("radio"));
 			}
 				
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
@@ -64,19 +64,19 @@ public class Calc extends HttpServlet {
 				second_try=0;	
 			}
 			
-			switch (calc) {
+			switch (radio) {
 			
 				case "a": 
 					result = Calc1.getResult();
-					request.setAttribute("calc", "Доход");
+					request.setAttribute("radio", "Доход");
 	
 				case "b": 
 					result = Calc2.getResult();
-					request.setAttribute("calc", "Стартовый капитал");
+					request.setAttribute("radio", "Стартовый капитал");
 					
 				case "c":
 					result = Calc3.getResult();
-					request.setAttribute("calc", "Срок достижения цели");
+					request.setAttribute("radio", "Срок достижения цели");
 				}
 			}
 			
