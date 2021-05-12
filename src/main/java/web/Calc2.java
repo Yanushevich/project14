@@ -10,7 +10,7 @@ public class Calc2 extends Calculations {
 		
 		switch (period) {
 		case 0: 
-			result = a / (1 + b * bank/100);
+			result = a / (1 + b * bank/100.0);
 		break;
 		case 12:
 		case 3:
@@ -19,7 +19,7 @@ public class Calc2 extends Calculations {
 			result = a / Math.pow(1 + bank/100.0/period, period * b);
 		break;
 		}
-		result = 0;
+
 		return result;
 	}
 

@@ -13,7 +13,7 @@
 
     <title> Инвестиционный калькулятор </title>
 </head>
-    <body background=”/assets/images/background.jpg”>
+    <body background=”/assets/images/Background.jpg”>
         <header class="header">
             <div class="container">
                 <div class="header__inner">

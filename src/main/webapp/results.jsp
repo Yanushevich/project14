@@ -54,7 +54,7 @@ setInterval(getDate, 0);
     <br><label class="txt">${first_result}</label>
     <br><label class="txt_r">${second_result}</label>
     <br><label class="txt_r">Банк: ${bank}</label>
-    <br><label class="txt_r">Период реинвестирования: ${period} г.</label>
+    <br><label class="txt_r">Период реинвестирования: ${period}</label>
     <br><label class="txt_r">${radio} : ${result}</label>
 <br><button onclick="window.location.href = 'index.jsp'" type="submit" class="animate-gradient">Назад</button>
 
