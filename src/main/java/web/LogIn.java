@@ -20,7 +20,7 @@ public class LogIn extends HttpServlet {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
-			response.sendRedirect("page.jsp");
+			response.sendRedirect("index.jsp");
 
 		} catch(Exception e) {
 			e.printStackTrace();
