@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/style.css">  
     <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Farro&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <title> Инвестиционный калькулятор </title>
 </head>
@@ -13,7 +14,7 @@
                 <div class="header__inner">
                     <div class="header__logo">Инвестиционный калькулятор</div>
                     <nav class="nav">
-                        <a class="nav__link_a" href="#">Администраторский доступ</a>
+                        <a class="nav__link_a" href="admin.html">Администраторский доступ</a>
                         <a class="nav__link" href="description.html">Описание</a>
                         <a class="nav__link" href="Info.html">Над калькулятором работали</a>
                         <a class="nav__link" href="#">Сохранить в PDF</a>
@@ -93,23 +94,18 @@ setInterval(getDate, 0);
   
   </script>
   
-  <div id="disp1"></div>
+    <div id="disp1"></div>
+    <input type="text" class="textbox" name="Text1" aria-describedby="basic-addon1">
   
-  <input type="text" class="form-control" name="Text1" aria-describedby="basic-addon1">
-  
-  <div class="form-group">
-  
-  <div id="disp2"></div>
-  
-  <input type="text" class="form-control" name="Text2" aria-describedby="basic-addon2">
-  </div>
+    <div id="disp2"></div>  
+    <input type="text" class="textbox" name="Text2" aria-describedby="basic-addon2">
   
   
-                    <div class="calc-frow">
-        <div class="calc-fleft">Банк</div>
-        <div class="calc-fright">
-            <div class="calc-input">
-                <select name="bank" class="calc-inp">
+    <div class="calc-frow">
+        <div>Банк</div>
+        <div>
+            <div>
+                <select name="bank">
                     <option value="1" selected>Сбербанк (2 %) </option>
                     <option value="2" >ВТБ (2 %)</option>
                     <option value="3" >Газпромбанк (2 %)</option>
@@ -135,7 +131,7 @@ setInterval(getDate, 0);
         </div>
     </div>
 
-                   <button type="submit" class="btn btn-primary">Посчитать</button>
+                   <button type="submit" class="animate-gradient">Посчитать</button>
                 </form>
             </div>
         </div>
