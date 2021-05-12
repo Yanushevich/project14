@@ -206,6 +206,19 @@ animation: marquee 10s infinite linear;
     z-index: 1;
 }
 
+.txt_r {
+    font-size: 22px;
+    padding-top: 0px;
+    display: inline-block;
+    margin: 0 auto;
+    color: #3A3D3C;
+    text-decoration: none;
+    position: relative;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
 .b-radio label{
 display: inline-block; 
 cursor: pointer;
