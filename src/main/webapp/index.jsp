@@ -61,17 +61,17 @@ setInterval(getDate, 0);
     <div class="b-radio" id="calc" role="group" aria-label="Basic radio toggle button group">
 
 		<label >
-            <input type="radio" name="radio" id="btnradio1" data-show="a" value="a" autocomplete="off">
+            <input required type="radio" name="radio" id="btnradio1" data-show="a" value="a" autocomplete="off">
             <span>Доход</span>
         </label>
 
 		<label >
-            <input type="radio" name="radio" id="btnradio2" data-show="b" value="b" autocomplete="off">
+            <input required type="radio" name="radio" id="btnradio2" data-show="b" value="b" autocomplete="off">
             <span>Стартовый капитал</span>
         </label>
         
 		<label >
-            <input type="radio" name="radio" id="btnradio3" data-show="c" value="c" autocomplete="off">
+            <input required type="radio" name="radio" id="btnradio3" data-show="c" value="c" autocomplete="off">
             <span>Срок достижения</span>
         </label>
 	
@@ -100,17 +100,17 @@ setInterval(getDate, 0);
   </script>
   
     <div id="disp1"></div>
-    <input type="text" class="textbox" name="Text1" aria-describedby="basic-addon1">
+    <input required type="text" class="textbox" name="Text1" aria-describedby="basic-addon1">
   
     <div id="disp2"></div>  
-    <input type="text" class="textbox" name="Text2" aria-describedby="basic-addon2">
+    <input required type="text" class="textbox" name="Text2" aria-describedby="basic-addon2">
   
   
     <div class="calc-frow">
         <div>Банк</div>
         <div>
             <div>
-                <select name="bank">
+                <select required name="bank">
                     <option value="1" selected>Сбербанк (1 %) </option>
                     <option value="2" >ВТБ (2 %)</option>
                     <option value="3" >Газпромбанк (3 %)</option>
@@ -125,7 +125,7 @@ setInterval(getDate, 0);
         <div>Период реинвестирования</div>
         <div>
             <div>
-                <select name="period">
+                <select required name="period">
                     <option value="0" >Не реинвестировать</option>
                     <option value="12" selected>1 раз в месяц</option>
                     <option value="3" >1 раз в квартал</option>

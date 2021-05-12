@@ -30,8 +30,19 @@ public class Calc extends HttpServlet {
 		private double result;
 						
 		private RequestCalc (String Text1, String Text2, String bank, String period, String radio) {
-			this.first_calc = Double.parseDouble(Text1);
-			this.second_calc = Double.parseDouble(Text2);
+		
+			double first_try;
+			double second_try;
+			try { 
+			first_try = Double.parseDouble(Text1);
+			second_try = Double.parseDouble(Text2);
+			}
+			catch (NumberFormatException e) {
+				first_try=0;
+				second_try=0;	
+			}
+			this.first_calc = first_try;
+			this.second_calc = second_try;
 			this.bank = Integer.parseInt(bank);
 			this.period = Integer.parseInt(period);
 			this.radio = radio;
@@ -49,6 +60,8 @@ public class Calc extends HttpServlet {
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
 			request.setAttribute("bank", bank);
 			request.setAttribute("period", period);
+			
+			
 			
 			System.out.println(first_calc);			
 			System.out.println(second_calc);
