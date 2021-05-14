@@ -7,18 +7,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 /**
  * Servlet implementation class Calc
  */
 @WebServlet("/calc")
 public class Calc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	public static  double first_calcGet;
+	public static double second_calcGet;
+	public static int bankGet;
+	public static int periodGet;
+	public static String radioGet;
+	public static double resultGet;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.setAsRequestAttributesAndCalculate(request);
 		request.getRequestDispatcher("/results.jsp").forward(request, response);
+		
+		CreatePDF PDF = new CreatePDF();
+		String goals = "Hello";
+		PDF.Create(goals);
 	}
 
 	private static class RequestCalc {
@@ -29,7 +40,7 @@ public class Calc extends HttpServlet {
 		private final String radio;
 		private double result;
 						
-		private RequestCalc (String Text1, String Text2, String bank, String period, String radio) {
+		private RequestCalc (String Text1, String Text2, String bank1, String period1, String radio) {
 		
 			double first_try;
 			double second_try;
@@ -43,9 +54,17 @@ public class Calc extends HttpServlet {
 			}
 			this.first_calc = first_try;
 			this.second_calc = second_try;
-			this.bank = Integer.parseInt(bank);
-			this.period = Integer.parseInt(period);
+			this.bank = Integer.parseInt(bank1);
+			this.period = Integer.parseInt(period1);
 			this.radio = radio;
+			
+			
+			first_calcGet=first_calc;
+			second_calcGet=second_calc;
+			bankGet=bank;
+			periodGet=period;
+		    radioGet=radio;
+			resultGet=result;
 			}
 		
 		public static RequestCalc fromRequestParameters(HttpServletRequest request) {
