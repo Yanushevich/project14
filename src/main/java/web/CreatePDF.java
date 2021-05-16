@@ -1,5 +1,6 @@
 package web;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -17,7 +18,7 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 
 /**
- * Servlet implementation class CreatePDF
+ * Servlet implementation class CreatePDF1
  */
 @WebServlet("/pdf")
 public class CreatePDF extends HttpServlet {
@@ -25,17 +26,24 @@ public class CreatePDF extends HttpServlet {
 	 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
 		 
-		    String fonturl = "webapps/project14/assets/times.ttf";
+		 	String filepath = new File("").getCanonicalPath();
+		 	String[] parsfilepath = filepath.split("/");
+			
+			int lengthpath = parsfilepath.length;
+			String abspath=""; 
+			for(int i=0;i<(lengthpath-1);i++) {
+				abspath=abspath+parsfilepath[i]+"/";
+			}
+			
+		 	String fonturl = abspath + "webapps/project14/assets/times.ttf";
 	        //Set content type to application / pdf
 	        //browser will open the document only if this is set
 	        response.setContentType("application/pdf");
 	        //Get the output stream for writing PDF object        
 	        OutputStream out=response.getOutputStream();
 	        BaseFont times = null;
-	        Font font = null;
 			try {
-				times = BaseFont.createFont(fonturl, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-				font = new Font(times, 14, Font.NORMAL);
+				times = BaseFont.createFont(fonturl, "cp1251", BaseFont.EMBEDDED);
 			} catch (DocumentException | IOException e) {
 				e.printStackTrace();
 			}
@@ -44,12 +52,12 @@ public class CreatePDF extends HttpServlet {
 	            /* Basic PDF Creation inside servlet */
 	            PdfWriter.getInstance(document, out);
 	            document.open();
-	            document.add(new Paragraph("Результат подсчетов:", font));
-	            document.add(new Paragraph(Calc.first_calcGet, font));
-	            document.add(new Paragraph(Calc.second_calcGet, font));
-	            document.add(new Paragraph("Банк: " + Calc.bankGet, font));
-	            document.add(new Paragraph("Период реинвестирования: " + Calc.periodGet, font));
-	            document.add(new Paragraph(Calc.radioGet + Calc.resultGet, font));
+	            document.add(new Paragraph("Результат подсчетов:", new Font(times,14)));
+	            document.add(new Paragraph(Calc.first_calcGet, new Font(times,14)));
+	            document.add(new Paragraph(Calc.second_calcGet, new Font(times,14)));
+	            document.add(new Paragraph("Банк: " + Calc.bankGet, new Font(times,14)));
+	            document.add(new Paragraph("Период реинвестирования: " + Calc.periodGet, new Font(times,14)));
+	            document.add(new Paragraph(Calc.radioGet + Calc.resultGet, new Font(times,14)));
 	            
 	            document.close();
 	        }
