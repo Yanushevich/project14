@@ -11,6 +11,16 @@
 	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" 
 	crossorigin="anonymous">
 </head>
+
+<%
+	String errorMsg = "";
+	if (session.getAttribute("err") != null) {
+		errorMsg = (String) session.getAttribute("err");
+		
+		session.removeAttribute("err");
+	}
+
+%>
 <body>
 
 <div class="container-fluid">
@@ -33,7 +43,12 @@
   
   <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
   <a class="btn btn-primary" href="auth.jsp" role="button">У меня уже есть аккаунт</a>
-
+  
+  	<% if(errorMsg != ""){ %>
+    <div class="alert alert-warning" role="alert">
+  		<%= errorMsg %>
+	</div>
+	<% } %>
 </form>
 
 </div>

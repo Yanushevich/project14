@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class DBController {
+public class DBRegister {
 	
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	private static String url = "jdbc:mysql://remotemysql.com:3306/v0tRUCkz6q";
@@ -23,7 +23,6 @@ public class DBController {
 			ps.setString(2, user.getPassword());
 			
 			ps.executeUpdate();
-			System.out.println("Connection established");
 			
 			return;
 		} catch(Exception e) {

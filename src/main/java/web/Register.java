@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Register
@@ -16,7 +17,7 @@ public class Register extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
 		try {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -25,13 +26,15 @@ public class Register extends HttpServlet {
 		user.setUsername(username);
 		user.setPassword(password);
 		
-		DBController.registerUser(user);
+		DBRegister.registerUser(user);
 		
 		response.sendRedirect("auth.jsp");
 		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			session.setAttribute("err", "ѕользователь с таким именем уже зарегистрирован");
+			response.sendRedirect("register.jsp");
 		}
 		
 	}
