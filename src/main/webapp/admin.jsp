@@ -18,7 +18,7 @@
                 <div class="header__inner">
                     <div class="header__logo">Страница Администратора</div>
                     <nav class="nav">
-                        <a class="nav__link" href="index.jsp">Главная</a>
+                        <a class="nav__link" href="main.jsp">Главная</a>
                     </nav>
                 </div>
             </div>

@@ -19,7 +19,6 @@
                 <div class="header__inner">
                     <div class="header__logo">Инвестиционный калькулятор</div>
                     <nav class="nav">
-                        <a class="nav__link_a" href="admin.jsp">Администраторский доступ</a>
                         <a class="nav__link" href="description.html">Описание</a>
                         <a class="nav__link" href="Info.html">Над калькулятором работали</a>
                         <a class="nav__link" href="pdf">Сохранить в PDF</a>
@@ -56,7 +55,7 @@ setInterval(getDate, 0);
     <br><label class="txt_r">Банк: ${bank}</label>
     <br><label class="txt_r">Период реинвестирования: ${period}</label>
     <br><label class="txt_r">${radio} : ${result}</label>
-<br><button onclick="window.location.href = 'index.jsp'" type="submit" class="animate-gradient">Назад</button>
+<br><button onclick="window.location.href = 'main.jsp'" type="submit" class="animate-gradient">Назад</button>
 
             </div>
         </div>

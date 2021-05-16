@@ -19,7 +19,12 @@
                 <div class="header__inner">
                     <div class="header__logo">Инвестиционный калькулятор</div>
                     <nav class="nav">
+                        
+                       	<% if (session.getAttribute("role") == "admin") { %>
+                       		
                         <a class="nav__link_a" href="admin.jsp">Администраторский доступ</a>
+                        
+                        <% } %>
                         <a class="nav__link" href="description.html">Описание</a>
                         <a class="nav__link" href="Info.html">Над калькулятором работали</a>
                     </nav>
