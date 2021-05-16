@@ -1,0 +1,17 @@
+language: java
+before_script:
+- echo "Starting build"
+script:
+- mvn clean package
+after_script:
+- echo "Script finished"
+after_success:
+- echo "Build ready"
+- ls -l $TRAVIS_BUILD_DIR/target
+after_failure:
+- echo "Build failure"
+deploy:
+  provider: heroku
+  api_key:
+    secure: Y7tCYtZH3AcdDF0KGwRfW/uN49ruDN2bYMiFzXACu4PaxCC2oIZ/vnP3vPS5engPBVM40b2JXQE8EzuJq0z9mHwh9bCiGje+Ya+ZKFeKiNgKh1MEi/YWz7nG2xP0WmFykYKiycQrZ91kcrSF/9j/Wk3d63KPvMFyaYMWexDDp0GZYrPW8PLVhFuNqwWzpnWC1aZMFrppjGqzE3o4zdl7bRJmsXOmUB8zmjR4/6idRuoh+1DV66R5z2Oa60wpHyalJPbwgzyqnPfX+as2mQP8prBSIUkpdxPWZJEbLIx6yPVkE7PXYBBNN62hq/O6CIJuRIMdAHEDWjIsAEnphy5p0Cn0Lg9tSHGDNSQGQb7hU2FSOux7NocK9JQ3gPKCC2SMOY3eR3V0HcoNc6b5X3jj33RaaNd81V17WtfFfhZaBCDk7KBaTX4v+zrXrl3bkaisR5x8Vpn34Xl5zav96txX+9z/NBc1ixahvfc2Q26m3TmBYBBsM7Ha0Nh6BVCzUix2+4swX1woxLa+VJV55cwFl4sV4AdeUTcq+L0zXRx2+z4oO0jgTE9IzAQby4n80GVXeN/t1Hewwz/bWDt+pVgnmN6BwMOPCsfsU9spPP1l1A1YnOlcQrxGVrs1zk5fnuS6ipO5ksinseyY4SXIGMwLHwHMMKh5G8do0Jvpp2wp45M=
+  edge: true

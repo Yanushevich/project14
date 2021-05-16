@@ -2,27 +2,58 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>project14</groupId>
   <artifactId>project14</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1</version>
   <packaging>war</packaging>
   <build>
+  
+  <finalName>project14</finalName>
+  <defaultGoal>package</defaultGoal>
+  
     <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>13</release>
-        </configuration>
-      </plugin>
-      <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-      </plugin>
-    </plugins>
+	     <plugin>
+	         <artifactId>maven-compiler-plugin</artifactId>
+	         <version>3.3</version>
+	         <configuration>
+	             <source>1.8</source>
+	             <target>1.8</target>
+	         </configuration>
+	     </plugin>
+                
+                <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>3.1.2</version>
+    <executions>
+        <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>copy</goal>
+            </goals>
+            <configuration>
+                <artifactItems>
+                    <artifactItem>
+                        <groupId>com.heroku</groupId>
+                        <artifactId>webapp-runner</artifactId>
+                        <version>9.0.31.0</version>
+                        <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                </artifactItems>
+                <outputDirectory>artifacts</outputDirectory>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+                
+<plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.3.0</version>
+    <configuration>
+        <goal>war:inplace</goal>
+        <outputDirectory>artifacts</outputDirectory>
+    </configuration>
+</plugin>
+</plugins>
+
   </build>
   
   <dependencies>
@@ -32,11 +63,24 @@
     <version>5.5.13.2</version>
 </dependency>
   <dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>3.0.1</version>
+    <groupId>jakarta.servlet</groupId>
+    <artifactId>jakarta.servlet-api</artifactId>
+    <version>5.0.0</version>
     <scope>provided</scope>
 </dependency>
+<dependency>
+    <groupId>jakarta.el</groupId>
+    <artifactId>jakarta.el-api</artifactId>
+    <version>4.0.0</version>
+</dependency>
+        
+<dependency>
+    <groupId>com.github.jsimone</groupId>
+    <artifactId>webapp-runner</artifactId>
+    <version>9.0.27.1</version>
+    <scope>provided</scope>
+</dependency>
+
   </dependencies>
   
 </project>

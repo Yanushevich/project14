@@ -15,21 +15,26 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/calc")
 public class Calc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static  double first_calcGet;
-	public static double second_calcGet;
-	public static int bankGet;
-	public static int periodGet;
+	public static String first_calcGet;
+	public static String second_calcGet;
+	public static String bankGet;
+	public static String periodGet;
+	public static String resultGet;
 	public static String radioGet;
-	public static double resultGet;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
 		Calc.setAsRequestAttributesAndCalculate(request);
 		request.getRequestDispatcher("/results.jsp").forward(request, response);
-		
+		/*
 		CreatePDF PDF = new CreatePDF();
 		String goals = "Hello";
-		PDF.Create(goals);
+		PDF.Create(goals); 
+		*/
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 	private static class RequestCalc {
@@ -37,7 +42,7 @@ public class Calc extends HttpServlet {
 		private final double second_calc;
 		private final int bank;
 		private final int period;
-		private final String radio;
+		private String radio;
 		private double result;
 						
 		private RequestCalc (String Text1, String Text2, String bank1, String period1, String radio) {
@@ -59,12 +64,10 @@ public class Calc extends HttpServlet {
 			this.radio = radio;
 			
 			
-			first_calcGet=first_calc;
-			second_calcGet=second_calc;
-			bankGet=bank;
-			periodGet=period;
-		    radioGet=radio;
-			resultGet=result;
+			
+			bankGet=""+bank;
+			periodGet=""+period;
+			
 			}
 		
 		public static RequestCalc fromRequestParameters(HttpServletRequest request) {
@@ -92,25 +95,32 @@ public class Calc extends HttpServlet {
 			
 				case "a":
 					result = Calc1.getResult(first_calc, second_calc, bank, period);
-					request.setAttribute("radio", "Доход");
-					request.setAttribute("first_result", "Стартовый капитал: " + first_calc);
-					request.setAttribute("second_result", "Срок инвестирования в годах: " + second_calc);
+					radio = "Доход";
+					
+					first_calcGet = "Стартовый капитал: " + first_calc;
+					second_calcGet = "Срок инвестирования в годах: " + second_calc;
+
 					break;
 				case "b":
 					result = Calc2.getResult(first_calc, second_calc, bank, period);
-					request.setAttribute("radio", "Стартовый капитал");
-					request.setAttribute("first_result", "Ваша цель: " + first_calc);
-					request.setAttribute("second_result", "Срок инвестирования в годах: " + second_calc);
+					radio = "Стартовый капитал";
+					first_calcGet = "Ваша цель: " + first_calc;
+					second_calcGet = "Срок инвестирования в годах: " + second_calc;
 					break;
 				case "c":
 					result = Calc3.getResult(first_calc, second_calc, bank, period);
-					request.setAttribute("radio", "Срок достижения цели");
-					request.setAttribute("first_result", "Ваша цель: " + first_calc);
-					request.setAttribute("second_result", "Стартовый капитал: " + second_calc);
+					radio = "Срок достижения цели";
+					first_calcGet = "Ваша цель: " + first_calc;
+					second_calcGet = "Стартовый капитал: " + second_calc;
 					break;
 				}
 			
+			request.setAttribute("radio", radio);
+			request.setAttribute("first_result", first_calcGet);
+			request.setAttribute("second_result", second_calcGet);
 			request.setAttribute("result", result);
+			radioGet = "" + radio;
+			resultGet = "" + result;
 			}
 			
 			

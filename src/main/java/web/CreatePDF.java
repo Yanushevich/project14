@@ -1,86 +1,76 @@
 package web;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.stream.Stream;
+import java.io.OutputStream;
 
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class CreatePDF {
-		
-   
-    public void Create(String numberpdf) throws IOException {
-      	
-    	Document document = new Document(); //создание класса Document
-    	
-    	String filepath = new File("").getCanonicalPath();
-		String[] parsfilepath = filepath.split("/");
-		
-		int lengthpath = parsfilepath.length;
-		String abspath=""; 
-		for(int i=0;i<(lengthpath-1);i++) {
-			abspath=abspath+parsfilepath[i]+"/";
-		}
-		filepath=abspath+"webapps/CreatePDF/Check.pdf";
-		String fontpath =abspath+"/webapps/CreatePDF/fonts/times.ttf";
-    	
-		try {	
-			PdfWriter.getInstance(document, new FileOutputStream(filepath));
-		} catch (FileNotFoundException | DocumentException e) {
-			e.printStackTrace();
-		}
-					
-		document.open(); 
-		
-		BaseFont times = null;
-		try {
-			times = BaseFont.createFont(fontpath, "cp1251", BaseFont.EMBEDDED);
-		} catch (DocumentException | IOException e) {
-			e.printStackTrace();
-		}
-		
-		String string_pdf = ""+ Calc.first_calcGet;
-		Paragraph paragraph = new Paragraph();
-	    paragraph.add(new Paragraph(string_pdf, new Font(times,14)));
-	    
-	    String string_pdf2 = "Дополнительный текст, который выводится в PDF. При этом нужно понимать, что можно указывать значения переменных, которые будут выводится в файл PDF.";
-	    paragraph.add(new Paragraph(string_pdf2, new Font(times,14)));
-	
-	    try {
-			document.add(paragraph);
-		} catch (DocumentException e1) {
-			e1.printStackTrace();
-		}
-	    
-	  //организация перехода на следующую строку
-		 paragraph.clear();
-		 String string_pdf3 = " ";
-		 paragraph.add(new Paragraph(string_pdf3, new Font(times,14)));
+/**
+ * Servlet implementation class CreatePDF1
+ */
+@WebServlet("/pdf")
+public class CreatePDF extends HttpServlet {
+	private static final long serialVersionUID = 1L; 
+	 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
 		 
-		 try {
-				document.add(paragraph);
-			} catch (DocumentException e1) {
-				e1.printStackTrace();
+		    String fonturl = "/webapps/project14/assets/times.ttf";
+	        //Set content type to application / pdf
+	        //browser will open the document only if this is set
+	        response.setContentType("application/pdf");
+	        //Get the output stream for writing PDF object        
+	        OutputStream out=response.getOutputStream();
+	        BaseFont times = null;
+			try {
+				times = BaseFont.createFont(fonturl, "cp1251", BaseFont.EMBEDDED);
+			} catch (DocumentException | IOException e) {
+				e.printStackTrace();
 			}
-    }
+	        try {
+	            Document document = new Document();
+	            /* Basic PDF Creation inside servlet */
+	            PdfWriter.getInstance(document, out);
+	            document.open();
+	            document.add(new Paragraph("Результат подсчетов:", new Font(times,14)));
+	            document.add(new Paragraph(Calc.first_calcGet, new Font(times,14)));
+	            document.add(new Paragraph(Calc.second_calcGet, new Font(times,14)));
+	            document.add(new Paragraph("Банк: " + Calc.bankGet, new Font(times,14)));
+	            document.add(new Paragraph("Период реинвестирования: " + Calc.periodGet, new Font(times,14)));
+	            document.add(new Paragraph(Calc.radioGet + Calc.resultGet, new Font(times,14)));
+	            
+	            document.close();
+	        }
+	                catch (DocumentException exc){
+	                throw new IOException(exc.getMessage());
+	                }
+	        finally {            
+	            out.close();
+	        }
+	    }
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
 }
-	    
-	 
-	    
-	    
-		
