@@ -8,4 +8,4 @@ deploy:
   edge: true
 app: pi222-project14
 on:
-  branch: master
+  branch: main
