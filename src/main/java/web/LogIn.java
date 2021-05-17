@@ -33,7 +33,7 @@ public class LogIn extends HttpServlet {
 			if (dbLogin.validate(user)) {
 				
 				session.setAttribute("role", username);
-				response.sendRedirect("main.jsp");
+				response.sendRedirect("premain.jsp");
 				
 				
 				

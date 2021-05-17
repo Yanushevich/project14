@@ -56,7 +56,7 @@ setInterval(getDate, 0);
     <br><label class="txt_r">Период реинвестирования: ${period}</label>
     <br><label class="txt_r">${radio} : ${result}</label>
     <form action="perc" method="post">
-<br><button type="submit" class="animate-gradient">Назад</button>
+<br><button type="submit" class="animate-gradient">На главную</button>
 	</form>
             </div>
         </div>

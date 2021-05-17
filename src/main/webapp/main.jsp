@@ -135,14 +135,7 @@ setInterval(getDate, 0);
     </div>
 
                    <button type="submit" class="animate-gradient">Посчитать</button>
-                </form>
-                
-                <form action="perc" method="post">
-                
-                <button type="submit" class="animate-gradient">Получить данные</button>
-                
-                </form>
-                
+                </form>                
                 
                 <form action="admin" method="post">
                 
