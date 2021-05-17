@@ -109,11 +109,11 @@ setInterval(getDate, 0);
         <div>
             <div>
                 <select required name="bank">
-                    <option value="1" selected>Сбербанк (1 %) </option>
-                    <option value="2" >ВТБ (2 %)</option>
-                    <option value="3" >Газпромбанк (3 %)</option>
-                    <option value="4" >Альфа-Банк (4 %)</option>
-                    <option value="5" >Тинькофф (5 %)</option>
+                    <option value="${perc1}" selected>Сбербанк: ${perc1}% </option>
+                    <option value="${perc2}" >ВТБ: ${perc2}%</option>
+                    <option value="${perc3}" >Газпромбанк: ${perc3}%</option>
+                    <option value="${perc4}" >Альфа-Банк: ${perc4}%</option>
+                    <option value="${perc5}" >Тинькофф: ${perc5}%</option>
                 </select>
             </div>
         </div>
@@ -135,6 +135,12 @@ setInterval(getDate, 0);
     </div>
 
                    <button type="submit" class="animate-gradient">Посчитать</button>
+                </form>
+                
+                <form action="perc" method="post">
+                
+                <button type="submit" class="animate-gradient">Получить данные</button>
+                
                 </form>
                 
                 

@@ -21,7 +21,7 @@
                     <nav class="nav">
                         <a class="nav__link" href="description.html">Описание</a>
                         <a class="nav__link" href="Info.html">Над калькулятором работали</a>
-                        <a class="nav__link" href="pdf">Сохранить в PDF</a>
+                        <a class="nav__link" href="pdf" target="_blank">Сохранить в PDF</a>
                     </nav>
                 </div>
             </div>
@@ -52,11 +52,12 @@ setInterval(getDate, 0);
                 
     <br><label class="txt">${first_result}</label>
     <br><label class="txt_r">${second_result}</label>
-    <br><label class="txt_r">Банк: ${bank}</label>
+    <br><label class="txt_r">Ставка: ${bank} %</label>
     <br><label class="txt_r">Период реинвестирования: ${period}</label>
     <br><label class="txt_r">${radio} : ${result}</label>
-<br><button onclick="window.location.href = 'main.jsp'" type="submit" class="animate-gradient">Назад</button>
-
+    <form action="perc" method="post">
+<br><button type="submit" class="animate-gradient">Назад</button>
+	</form>
             </div>
         </div>
     </body>

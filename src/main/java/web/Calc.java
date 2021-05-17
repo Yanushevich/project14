@@ -80,8 +80,31 @@ public class Calc extends HttpServlet {
 			}
 				
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
+			String period1 = "";
 			request.setAttribute("bank", bank);
-			request.setAttribute("period", period);
+			
+			switch (period) {
+			
+			case 0:
+				period1 = "Не реинвестировать";
+				break;
+			case 12:
+				period1 = "1 раз в месяц";
+				break;
+			case 3:
+				period1 = "1 раз в квартал";
+				break;
+			case 2:
+				period1 = "1 раз в полгода";
+				break;
+			case 1:
+				period1 = "1 раз в год";
+				break;
+				
+				
+			}
+			
+			request.setAttribute("period", period1);
 			
 			
 			

@@ -33,8 +33,10 @@ public class LogIn extends HttpServlet {
 			if (dbLogin.validate(user)) {
 				
 				session.setAttribute("role", username);
-				
 				response.sendRedirect("main.jsp");
+				
+				
+				
 			} else {
 				session.setAttribute("err", "Неверные логин/пароль");
 				response.sendRedirect("auth.jsp");
