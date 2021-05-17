@@ -2,11 +2,11 @@ package web;
 
 public class Calc2 extends Calculations {
 
-	Calc2(double a, double b, int bank, int period)  {
+	Calc2(double a, double b, double bank, int period)  {
 		super(a, b, bank, period);
 	}
 
-	public static double getResult(double a, double b, int bank, int period) {
+	public static double getResult(double a, double b, double bank, int period) {
 		
 		switch (period) {
 		case 0: 

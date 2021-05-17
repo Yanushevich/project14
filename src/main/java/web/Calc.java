@@ -44,7 +44,7 @@ public class Calc extends HttpServlet {
 	private static class RequestCalc {
 		private final double first_calc;
 		private final double second_calc;
-		private final int bank;
+		private final double bank;
 		private final int period;
 		private String radio;
 		private double result;
@@ -63,7 +63,7 @@ public class Calc extends HttpServlet {
 			}
 			this.first_calc = first_try;
 			this.second_calc = second_try;
-			this.bank = Integer.parseInt(bank1);
+			this.bank = Double.parseDouble(bank1);
 			this.period = Integer.parseInt(period1);
 			this.radio = radio;
 			
