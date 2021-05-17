@@ -141,7 +141,7 @@ public class Calc extends HttpServlet {
 					radio = "Стартовый капитал";
 					
 					first_calcGet = "Ваша цель: " + first_calc;
-					second_calcGet = "Срок инвестирования (в годах): " + second_calc;
+					second_calcGet = "Срок инвестирования (в годах): " + second_calc;	
 					
 					first_calcGet1 = "Your goal: " + first_calc;
 					second_calcGet1 = "Investment term (in years): " + second_calc;
