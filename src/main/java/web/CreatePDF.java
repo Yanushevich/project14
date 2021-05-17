@@ -52,11 +52,11 @@ public class CreatePDF extends HttpServlet {
 	            /* Basic PDF Creation inside servlet */
 	            PdfWriter.getInstance(document, out);
 	            document.open();
-	            document.add(new Paragraph("Результат подсчетов:", new Font(times,14)));
-	            document.add(new Paragraph(Calc.first_calcGet, new Font(times,14)));
-	            document.add(new Paragraph(Calc.second_calcGet, new Font(times,14)));
-	            document.add(new Paragraph("Банк: " + Calc.bankGet, new Font(times,14)));
-	            document.add(new Paragraph("Период реинвестирования: " + Calc.periodGet, new Font(times,14)));
+	            document.add(new Paragraph("Results:", new Font(times,14)));
+	            document.add(new Paragraph(Calc.first_calcGet1, new Font(times,14)));
+	            document.add(new Paragraph(Calc.second_calcGet1, new Font(times,14)));
+	            document.add(new Paragraph("Rate: " + Calc.bankGet, new Font(times,14)));
+	            document.add(new Paragraph("Reinvestment period: " + Calc.period2, new Font(times,14)));
 	            document.add(new Paragraph(Calc.radioGet + Calc.resultGet, new Font(times,14)));
 	            
 	            document.close();

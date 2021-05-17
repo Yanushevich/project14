@@ -17,10 +17,14 @@ public class Calc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String first_calcGet;
 	public static String second_calcGet;
+	public static String first_calcGet1;
+	public static String second_calcGet1;
 	public static String bankGet;
 	public static String periodGet;
 	public static String resultGet;
 	public static String radioGet;
+	public static String period1;
+	public static String period2;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestCalc Calc = RequestCalc.fromRequestParameters(request);
@@ -80,25 +84,30 @@ public class Calc extends HttpServlet {
 			}
 				
 		public void setAsRequestAttributesAndCalculate(HttpServletRequest request) {
-			String period1 = "";
+			
 			request.setAttribute("bank", bank);
 			
 			switch (period) {
 			
 			case 0:
 				period1 = "Не реинвестировать";
+				period2 = "Do not reinvest";
 				break;
 			case 12:
 				period1 = "1 раз в месяц";
+				period2 = "Once a month";
 				break;
 			case 3:
 				period1 = "1 раз в квартал";
+				period2 = "Once a quarter";
 				break;
 			case 2:
 				period1 = "1 раз в полгода";
+				period2 = "Half-yearly";
 				break;
 			case 1:
 				period1 = "1 раз в год";
+				period2 = "Once a year";
 				break;
 				
 				
@@ -121,20 +130,33 @@ public class Calc extends HttpServlet {
 					radio = "Доход";
 					
 					first_calcGet = "Стартовый капитал: " + first_calc;
-					second_calcGet = "Срок инвестирования в годах: " + second_calc;
+					second_calcGet = "Срок инвестирования (в годах): " + second_calc;
+					
+					first_calcGet1 = "Startup capital: " + first_calc;
+					second_calcGet1 = "Investment term (in years): " + second_calc;
 
 					break;
 				case "b":
 					result = Calc2.getResult(first_calc, second_calc, bank, period);
 					radio = "Стартовый капитал";
+					
 					first_calcGet = "Ваша цель: " + first_calc;
-					second_calcGet = "Срок инвестирования в годах: " + second_calc;
+					second_calcGet = "Срок инвестирования (в годах): " + second_calc;
+					
+					first_calcGet1 = "Your goal: " + first_calc;
+					second_calcGet1 = "Investment term (in years): " + second_calc;
+					
 					break;
 				case "c":
 					result = Calc3.getResult(first_calc, second_calc, bank, period);
 					radio = "Срок достижения цели";
+					
 					first_calcGet = "Ваша цель: " + first_calc;
 					second_calcGet = "Стартовый капитал: " + second_calc;
+					
+					first_calcGet1 = "Your goal: " + first_calc;
+					second_calcGet1 = "Startup capital: " + second_calc;
+					
 					break;
 				}
 			
