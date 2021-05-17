@@ -40,7 +40,7 @@ public class DBAdmin2 extends HttpServlet {
 			ps.executeUpdate();
 		    ps.close();
 
-            response.sendRedirect("main.jsp");
+            response.sendRedirect("premain.jsp");
 
 		} catch(Exception e) {
 

@@ -21,12 +21,6 @@
   
 		        <form action="perc" method="post">
 		        
-				  <div class="form-group">
-				  
-				    <label>Вы успешно авторизировались!</label>
-				  
-				  </div>
-  
   				<button type="submit" class="btn btn-primary">На главную</button>
 			    
 			    

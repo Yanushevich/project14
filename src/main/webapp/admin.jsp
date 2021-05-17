@@ -35,10 +35,11 @@
 				  <div class="form-group">
 				  
 				    <label>Процент</label>
+				   
 				    <input 
 				    	type="text" name="percent" class="form-control">
 				  </div>
-  
+  				 <div>Если число не целое, то отделять дробную часть необходимо точкой</div>
   				<button type="submit" class="btn btn-primary">Изменить</button>
 			    
 			    
