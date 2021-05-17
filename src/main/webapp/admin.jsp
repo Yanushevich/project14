@@ -19,7 +19,7 @@
 	class="col-12 bg-dark text-light d-flex justify-content-center align-items-center"
 	style="height: 100vh">
   
-		        <form action="admin" method="post">
+		        <form action="admin2" method="post">
 		        
 		          <div class="form-group">
 		          
